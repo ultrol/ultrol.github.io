@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цены на ремонт | Эксперт-Мотор</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- СКВОЗНАЯ ШАПКА САЙТА -->
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="logo header__logo">
+                <div class="logo__text">
+                    <span class="logo__title">ЭКСПЕРТ-МОТОР</span>
+                    <span class="logo__subtitle">автосервис</span>
+                </div>
+            </a>
+            <div class="header__right">
+                <nav class="menu header__menu" id="headerMenu">
+                    <ul class="menu__list">
+                        <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
+                        <li class="menu__item"><a href="index.html#services" class="menu__link">Услуги</a></li>
+                        <li class="menu__item"><a href="index.html#about" class="menu__link">О компании</a></li>
+                        <li class="menu__item"><a href="index.html#contacts" class="menu__link">Контакты</a></li>
+                        <!-- Пункт отделен и активен на этой странице -->
+                        <li class="menu__item menu__item--separator"><a href="prices.html" class="menu__link menu__link--active">Цены</a></li>
+                    </ul>
+                </nav>
+                <div class="header__contacts">
+                    <a href="tel:+78005553535" class="header__phone">+8 (800) 555-35-35</a>
+                </div>
+                <button class="burger" id="burgerBtn"><span class="burger__line"></span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- СЕКЦИЯ С ТАБЛИЦЕЙ ЦЕН -->
+    <section class="price-page">
+        <div class="container">
+            <span class="services__badge">Прайс-лист</span>
+            <h1 class="price-page__title">Тарифы на обслуживание автомобилей</h1>
+            
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Категория / Наименование выполняемой работы</th>
+                        <th>Срок исполнения</th>
+                        <th>Стоимость</th>
+                        <th>Запись</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- КАТЕГОРИЯ 1: ДИАГНОСТИКА И ЭЛЕКТРИКА -->
+                    <tr style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Компьютерная диагностика и автоэлектрика</td></tr>
+                    <tr>
+                        <td>Компьютерное сканирование всех электронных блоков управления (ЭБУ) с расшифровкой ошибок</td>
+                        <td>от 20 минут</td>
+                        <td class="text-accent">1 500 ₽</td>
+                        <td><a href="index.html?service=Компьютерная диагностика ЭБУ#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Поиск скрытого короткого замыкания, утечки тока и ремонт силовой автопроводки</td>
+                        <td>от 1 часа</td>
+                        <td class="text-accent">от 2 000 ₽</td>
+                        <td><a href="index.html?service=Ремонт автопроводки#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Диагностика, переборка или полная замена генератора / стартера автомобиля</td>
+                        <td>от 1.5 часов</td>
+                        <td class="text-accent">от 2 500 ₽</td>
+                        <td><a href="index.html?service=Ремонт генератора и стартера#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Адаптация дроссельной заслонки, датчиков положения и сброс сервисных интервалов</td>
+                        <td>от 15 минут</td>
+                        <td class="text-accent">1 000 ₽</td>
+                        <td><a href="index.html?service=Адаптация датчиков и дросселя#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Установка и настройка охранных систем (сигнализации с автозапуском, парктроники)</td>
+                        <td>от 3 часов</td>
+                        <td class="text-accent">от 5 000 ₽</td>
+                        <td><a href="index.html?service=Установка автосигнализации#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+
+                    <!-- КАТЕГОРИЯ 2: РЕМОНТ ДВИГАТЕЛЯ -->
+                    <tr style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Ремонт двигателей и узлов ДВС</td></tr>
+                    <tr>
+                        <td>Капитальный ремонт бензинового / дизельного двигателя (дефектовка, расточка, сборка)</td>
+                        <td>от 3 дней</td>
+                        <td class="text-accent">от 25 000 ₽</td>
+                        <td><a href="index.html?service=Капитальный ремонт ДВС#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Замена комплекта приводного ремня или цепи ГРМ, натяжных роликов и водяной помпы</td>
+                        <td>от 3 часов</td>
+                        <td class="text-accent">от 6 000 ₽</td>
+                        <td><a href="index.html?service=Замена комплекта ГРМ#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Замена прокладки головки блока цилиндров (ГБЦ) с шлифовкой привалочной плоскости</td>
+                        <td>от 5 часов</td>
+                        <td class="text-accent">от 8 000 ₽</td>
+                        <td><a href="index.html?service=Замена прокладки ГБЦ#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Регулировка тепловых зазоров клапанов (механическая, подбором шайб или стаканов)</td>
+                        <td>от 2 часов</td>
+                        <td class="text-accent">от 2 500 ₽</td>
+                        <td><a href="index.html?service=Регулировка клапанов#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Замена переднего / заднего сальника коленвала, прокладки клапанной крышки и поддона</td>
+                        <td>от 1 часа</td>
+                        <td class="text-accent">от 1 500 ₽</td>
+                        <td><a href="index.html?service=Замена сальников и прокладок ДВС#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+
+                    <!-- КАТЕГОРИЯ 3: ТЕХНИЧЕСКОЕ ОБСЛУЖИВАНИЕ -->
+                    <tr style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Регламентное техническое обслуживание (ТО)</td></tr>
+                    <tr>
+                        <td>Комплексное ТО: замена моторного масла, масляного, воздушного и салонного фильтров</td>
+                        <td>от 30 минут</td>
+                        <td class="text-accent">800 ₽</td>
+                        <td><a href="index.html?service=Регламентное ТО автомобиля#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Полная аппаратная замена трансмиссионного масла в АКПП / Вариаторе (CVT) с промывкой поддона</td>
+                        <td>от 1 часа</td>
+                        <td class="text-accent">от 3 500 ₽</td>
+                        <td><a href="index.html?service=Аппаратная замена масла в АКПП#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Замена свечей зажигания (комплект, 4 шт., бензиновый ДВС)</td>
+                        <td>от 20 минут</td>
+                        <td class="text-accent">от 1 000 ₽</td>
+                        <td><a href="index.html?service=Замена свечей зажигания#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Комплексная промывка инжектора и топливных форсунок на специализированном стенде</td>
+                        <td>от 1 часа</td>
+                        <td class="text-accent">2 500 ₽</td>
+                        <td><a href="index.html?service=Промывка инжектора и форсунок#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Замена охлаждающей жидкости (антифриза) с полной промывкой контура радиатора</td>
+                        <td>от 40 минут</td>
+                        <td class="text-accent">1 500 ₽</td>
+                        <td><a href="index.html?service=Замена антифриза с промывкой#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+
+                    <!-- КАТЕГОРИЯ 4: ПОДВЕСКА И РУЛЕВОЕ УПРАВЛЕНИЕ -->
+                    <tr style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Ремонт ходовой части и рулевого управления</td></tr>
+                    <tr>
+                        <td>Замена передних / задних амортизаторов, опорных подшипников и пружин подвески (за шт.)</td>
+                        <td>от 1 часа</td>
+                        <td class="text-accent">от 1 800 ₽</td>
+                        <td><a href="index.html?service=Замена амортизаторов подвески#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Замена ступичного подшипника (выпрессовка и запрессовка на гидравлическом станке)</td>
+                        <td>от 1.5 часов</td>
+                        <td class="text-accent">от 2 000 ₽</td>
+                        <td><a href="index.html?service=Замена ступичного подшипника#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Замена сайлентблоков рычагов подвески, шаровых опор, тяг и втулок стабилизатора</td>
+                        <td>от 30 минут</td>
+                        <td class="text-accent">от 600 ₽</td>
+                        <td><a href="index.html?service=Ремонт рычагов и сайлентблоков#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Ремонт рулевой рейки (замена ремкомплекта, сальников, устранение люфта и стука)</td>
+                        <td>от 5 часов</td>
+                        <td class="text-accent">от 7 000 ₽</td>
+                        <td><a href="index.html?service=Ремонт рулевой рейки#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Проверка и регулировка углов установки колес (Сход-Развал) на высокоточном 3D-стенде</td>
+                        <td>от 30 минут</td>
+                        <td class="text-accent">1 600 ₽</td>
+                        <td><a href="index.html?service=Регулировка Сход-Развала 3D#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <!-- КАТЕГОРИЯ 5: ТОРМОЗНАЯ СИСТЕМА -->
+                    <tr style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Ремонт и обслуживание тормозной системы</td></tr>
+                    <tr>
+                        <td>Замена тормозных колодок (дисковая тормозная система, за ось)</td>
+                        <td>от 20 минут</td>
+                        <td class="text-accent">800 ₽</td>
+                        <td><a href="index.html?service=Замена тормозных колодок#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Замена тормозных дисков в комплекте с колодками и очисткой посадочных мест (ось)</td>
+                        <td>от 40 минут</td>
+                        <td class="text-accent">1 800 ₽</td>
+                        <td><a href="index.html?service=Замена тормозных дисков#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Комплексная переборка тормозного суппорта (замена поршня, пыльников, смазка направляющих)</td>
+                        <td>от 1 часа</td>
+                        <td class="text-accent">от 1 500 ₽</td>
+                        <td><a href="index.html?service=Ремонт и переборка суппортов#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Замена тормозной жидкости под давлением с полной прокачкой контуров системы и ABS</td>
+                        <td>от 30 минут</td>
+                        <td class="text-accent">1 200 ₽</td>
+                        <td><a href="index.html?service=Замена тормозной жидкости#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+
+                    <!-- КАТЕГОРИЯ 6: КЛИМАТ И КОНДИЦИОНЕРЫ -->
+                    <tr style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Обслуживание автомобильных кондиционеров</td></tr>
+                    <tr>
+                        <td>Вакуумирование системы кондиционирования, проверка на герметичность и заправка фреоном</td>
+                        <td>от 30 минут</td>
+                        <td class="text-accent">2 000 ₽</td>
+                        <td><a href="index.html?service=Заправка кондиционера фреоном#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                    <tr>
+                        <td>Антибактериальная дезинфекция испарителя кондиционера и воздуховодов ультразвуком</td>
+                        <td>от 40 минут</td>
+                        <td class="text-accent">1 800 ₽</td>
+                        <td><a href="index.html?service=Дезинфекция кондиционера#contacts" class="price-table__btn" title="Записаться">✔</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="price-page__actions">
+                <a href="index.html#contacts" class="btn">Не нашли свою проблему? Попробуйте описать её здесь </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-simple">
+        <div class="container footer__bottom-container">
+            <p>&copy; 2026 Автосервис «Эксперт-Мотор». Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const headerMenu = document.getElementById('headerMenu');
+        burgerBtn.addEventListener('click', () => {
+            burgerBtn.classList.toggle('burger--active');
+            headerMenu.classList.toggle('menu--open');
+        });
+    </script>
+</body>
+</html>
