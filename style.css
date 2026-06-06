@@ -1,0 +1,671 @@
+:root {
+    --color-dark: #11141a;       /* Глубокий темный графит (основа шапки) */
+    --color-light: #ffffff;      /* Белоснежный контент */
+    --color-accent: #0076ff;     /* Новый акцент: Технологичный синий электрик */
+    --color-gray: #f8f9fa;       /* Светлый фон страниц */
+    --color-text-muted: #6c757d; /* Сдержанный серый для подзаголовков */
+    --font-main: 'Montserrat', sans-serif;
+    --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-gray);
+    color: var(--color-dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==========================================================================
+   2. КОМПОНЕНТ: ЛОГОТИП (БЕЗ КАРТИНКИ)
+   ========================================================================== */
+.logo {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-light);
+}
+
+.logo__text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo__title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.1;
+}
+
+.logo__subtitle {
+    font-size: 10px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 3.5px;
+    margin-top: 2px;
+}
+
+/* ==========================================================================
+   3. КОМПОНЕНТ: СТРУКТУРА ШАПКИ (HEADER)
+   ========================================================================== */
+
+.header {
+    background-color: #11141a; /* Глубокий графитовый цвет */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.header__phone {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.25s ease;
+}
+
+.header__phone:hover {
+    color: #0076ff; /* Свечение синим при наведении */
+}
+
+/* Скрываем мобильный телефон внутри меню на ПК по умолчанию */
+.menu__contacts-mobile {
+    display: none;
+}
+
+/* Анимированная навигация */
+.menu__list {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.menu__link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 6px 0;
+    position: relative;
+    letter-spacing: 0.5px;
+    transition: color 0.25s ease;
+}
+
+/* Анимация подчеркивания */
+.menu__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0076ff;
+    transition: width 0.25s ease;
+}
+
+.menu__link:hover {
+    color: #0076ff;
+}
+
+.menu__link:hover::after,
+.menu__link--active::after {
+    width: 100%;
+}
+
+.menu__link--active {
+    color: #0076ff;
+}
+
+/* Кнопка бургер */
+.burger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 26px;
+    height: 20px;
+    position: relative;
+}
+
+/* Адаптивность под смартфоны и планшеты  */
+@media (max-width: 1024px) {
+    .header__container {
+        padding: 0 15px;
+    }
+
+    .header__right {
+        gap: 0;
+    }
+
+    .header__contacts {
+        display: none; /* Скрытие основного телефона на мобильных */
+    }
+
+    .burger {
+        display: block;
+        z-index: 110;
+        margin-left: auto; /* Прижатие к правому краю */
+    }
+
+    .burger__line,
+    .burger::before,
+    .burger::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #ffffff;
+        left: 0;
+        transition: transform 0.25s ease, top 0.25s ease, bottom 0.25s ease;
+    }
+
+    .burger::before { top: 0; }
+    .burger__line { top: 9px; }
+    .burger::after { bottom: 0; }
+
+    /* Переключение в крестик */
+    .burger--active .burger__line { transform: scale(0); }
+    .burger--active::before { transform: rotate(45deg); top: 9px; }
+    .burger--active::after { transform: rotate(-45deg); bottom: 9px; }
+
+    /* Выезжающая панель мобильного меню */
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: #11141a;
+        padding: 100px 20px 20px 40px;
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+        transition: right 0.25s ease;
+        z-index: 105;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Распределяем ссылки наверх, а контакты вниз */
+    }
+
+    .menu--open {
+        right: 0;
+    }
+
+    .menu__list {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .menu__link {
+        font-size: 16px;
+    }
+
+    /* Активируем отображение телефона в самом низу бургера */
+    .menu__contacts-mobile {
+        display: block;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .menu__contacts-mobile .header__phone {
+        font-size: 18px;
+        color: #0076ff; /* Мобильный телефон делаем сразу ярким */
+    }
+}
+
+/* ==========================================================================
+   6. ОБЩИЕ КОМПОНЕНТЫ (КНОПКИ И АКЦЕНТЫ)
+   ========================================================================== */
+.text-accent {
+    color: var(--color-accent);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-light);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 36px;
+    border: none;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn:hover {
+    background-color: #0056cc; /* Более глубокий синий при наведении */
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   6. ГЛАВНЫЙ БАННЕР
+   ========================================================================== */
+.promo {
+    position: relative;
+    height: 65vh; /* Компактная высота баннера */
+    min-height: 480px;
+    overflow: hidden;
+    background-color: #11141a;
+}
+
+/* Фоновая инженерная сетка чертежа */
+.promo__blueprint-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.promo__slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* Элемент слайда */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--slide-img);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply; 
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.slide--active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Затемняющий градиент поверх картинки */
+.slide__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(17, 20, 26, 0.95) 35%, rgba(17, 20, 26, 0.4) 100%);
+    z-index: 2;
+}
+
+.slide__container {
+    width: 100%;
+    position: relative;
+    z-index: 3;
+}
+
+/* Анимация плавного появления текста */
+.slide__content {
+    max-width: 650px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease 0.2s, opacity 0.5s ease 0.2s;
+}
+
+.slide--active .slide__content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide__badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #0076ff;
+    border-left: 3px solid #0076ff;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.slide__title {
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.slide__text {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Точки навигации */
+.promo__dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.promo__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.promo__dot--active {
+    background: #0076ff;
+    transform: scale(1.3);
+}
+
+/* Адаптивность под ширину */
+@media (max-width: 768px) {
+    .promo {
+        height: 480px; 
+    }
+    .slide__title {
+        font-size: 32px;
+    }
+}
+@media (max-width: 576px) {
+    .slide__title { font-size: 26px; }
+    .slide__text { font-size: 14px; }
+}
+
+/* ==========================================================================
+   9. БЛОК УСЛУГ И ИНТЕРАКТИВНЫЙ ФИЛЬТР
+   ========================================================================== */
+
+.services {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.services__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.services__badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0076ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.services__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #11141a;
+}
+
+/* Кнопки фильтра */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 50px;
+}
+
+.filter-btn {
+    background-color: #ffffff;
+    color: #11141a;
+    border: 1px solid #e1e4e8;
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+    border-color: #0076ff;
+    color: #0076ff;
+}
+
+.filter-btn--active {
+    background-color: #0076ff;
+    color: #ffffff;
+    border-color: #0076ff;
+}
+
+/* Трехколоночная сетка */
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Стилизация карточки */
+.service-card {
+    background-color: #ffffff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
+    transform-origin: center;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 76, 255, 0.1);
+}
+
+.service-card__image-box {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background-color: #eee;
+}
+
+.service-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-card__img {
+    transform: scale(1.05);
+}
+
+.service-card__content {
+    padding: 25px;
+}
+
+.service-card__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    color: #11141a;
+}
+
+.service-card__text {
+    font-size: 14px;
+    color: #555a60;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    height: 67px;
+    overflow: hidden;
+}
+
+.service-card__price {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0076ff;
+}
+
+/* Адаптивность под ширину */
+@media (max-width: 1024px) {
+    .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+@media (max-width: 768px) {
+    .services__grid {
+        grid-template-columns: 1fr;
+    }
+    .filter-buttons {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        white-space: nowrap;
+    }
+}
+
+/* ==========================================================================
+   9. БЛОК "О СЕРВИСЕ"
+   ========================================================================== */
+
+.about {
+    padding: 90px 0;
+    background-color: #ffffff;
+    border-top: 1px solid #e1e4e8;
+}
+
+.about__container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Левая колонка чуть шире под текст */
+    gap: 80px;
+    align-items: center;
+}
+
+.about__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #11141a;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.about__text {
+    font-size: 15px;
+    color: #4a5056;
+    line-height: 1.7;
+}
+
+/* Сетка инфографики */
+.about__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Три равных колонки под цифры */
+    gap: 20px;
+    text-align: center;
+}
+
+/* Стилизация отдельного элемента цифры */
+.stat-item {
+    padding: 20px 10px;
+    border-left: 1px solid #e1e4e8; /* Тонкие технические разделители */
+}
+
+/* Убираем линию слева у самого первого элемента */
+.stat-item:first-child {
+    border-left: none; 
+}
+
+.stat-item__number {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    color: #0076ff; /* Фирменный неоново-синий */
+    margin-bottom: 8px;
+}
+
+.stat-item__label {
+    display: block;
+    font-size: 12px;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+/* Адаптивность под ширину */
+
+@media (max-width: 1024px) {
+    .about__container {
+        grid-template-columns: 1fr; /* Перестроение в одну вертикальную колонку */
+        gap: 50px;
+    }
+    .about {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .about__stats {
+        grid-template-columns: 1fr; /* На смартфонах цифры встают друг под друга */
+        gap: 15px;
+    }
+    .stat-item {
+        border-left: none;
+        border-bottom: 1px solid #e1e4e8; /* Заменяем вертикальную линию на горизонтальную */
+        padding: 10px 0;
+    }
+    .stat-item:last-child {
+        border-bottom: none; /* Убираем нижнюю линию у последнего элемента */
+    }
+}
