@@ -543,7 +543,6 @@ margin-left: 10px;
     cursor: pointer;
     border-radius: 2px;
     transition: all 0.25s ease;
-    width: 150px;
 }
 
 .filter-btn:hover {
