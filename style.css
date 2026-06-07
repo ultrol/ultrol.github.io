@@ -530,7 +530,6 @@ margin-left: 10px;
     flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 50px;
-    width: 150px;
 }
 
 .filter-btn {
@@ -544,6 +543,7 @@ margin-left: 10px;
     cursor: pointer;
     border-radius: 2px;
     transition: all 0.25s ease;
+    width: 150px;
 }
 
 .filter-btn:hover {
