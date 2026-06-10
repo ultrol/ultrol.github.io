@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024px, initial-scale=1.0">
+    <title>Эксперт-Мотор | Автосервис</title>
+    <!-- Подключение шрифта Montserrat -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ШАПКА САЙТА -->
+<header class="header" id="header">
+    <div class="container header__container">
+
+    <a href="index.html" class="logo header__logo" aria-label="Главная Эксперт-Мотор">
+        <img src="img/logo.png" alt="logo" class="logo__image">
+        
+        <div class="logo__text">
+            <span class="logo__title">ЭКСПЕРТ-МОТОР</span>
+            <span class="logo__subtitle">автосервис</span>
+        </div>
+    </a>
+
+        <!-- Блок навигации и элементов управления -->
+        <div class="header__right">
+            <nav class="menu header__menu" id="headerMenu">
+                <ul class="menu__list">
+                    <li class="menu__item"><a href="#promo" class="menu__link menu__link--active" data-sec="promo">Главная</a></li>
+                    <li class="menu__item"><a href="#services" class="menu__link" data-sec="services">Услуги</a></li>
+                    <li class="menu__item"><a href="#appointment" class="menu__link" data-sec="contacts">Контакты</a></li>
+                    <li class="menu__item"><a href="#about" class="menu__link" data-sec="about">О нас</a></li>
+                    <li class="menu__item"><a href="#reviews" class="menu__link" data-sec="about">Отзывы</a></li>
+                    <!-- Отделенная страница -->
+                    <li class="menu__item menu__item--separator"><a href="prices.html" class="menu__link">Цены</a></li>
+                </ul>
+                <div class="menu__contacts-mobile">
+                    <a href="tel:+78005553535" class="header__phone">+8 (800) 555-35-35</a>
+                </div>
+            </nav>
+
+            <!-- Быстрые контакты -->  
+            <div class="header__contacts">
+                <a href="tel:+88005553535" class="header__phone">+8 (800) 555-35-35</a>
+            </div>
+
+            <!-- Бургер-кнопка для адаптивного меню -->
+            <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+                <span class="burger__line"></span>
+            </button>
+        </div>
+
+    </div>
+</header>
+
+<script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const headerMenu = document.getElementById('headerMenu');
+
+    burgerBtn.addEventListener('click', () => {
+        burgerBtn.classList.toggle('burger--active');
+        headerMenu.classList.toggle('menu--open');
+    });
+
+    // Закрытие меню при клике на любой из пунктов навигации
+    document.querySelectorAll('.menu__link').forEach(link => {
+        link.addEventListener('click', () => {
+            burgerBtn.classList.remove('burger--active');
+            headerMenu.classList.remove('menu--open');
+        });
+    });
+</script>
+
+
+<!-- БАННЕР-->
+<section class="promo" id="promo">
+    <!-- Узор-сетка под картинками -->
+    <div class="promo__blueprint-bg"></div>
+
+    <div class="promo__slider" id="promoSlider">
+        
+        <!-- Слайд 1 -->
+        <div class="slide slide--active" style="--slide-img: url('img/1.jpg');">
+            <div class="slide__overlay"></div>
+            <div class="container slide__container">
+                <div class="slide__content">
+                    <span class="slide__badge">Акция месяца</span>
+                    <h1 class="slide__title">Компьютерная диагностика <span class="text-accent">0 ₽</span></h1>
+                    <p class="slide__text">При проведении любого ремонта или планового технического обслуживания в нашем сервисе.</p>
+                    <a href="#appointment" class="btn slide__btn">Записаться на сервис</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 2 -->
+        <div class="slide" style="--slide-img: url('img/2.jpg');">
+            <div class="slide__overlay"></div>
+            <div class="container slide__container">
+                <div class="slide__content">
+                    <span class="slide__badge">Ремонт ДВС</span>
+                    <h2 class="slide__title">Капитальный ремонт моторов</h2>
+                    <p class="slide__text">Опытные мотористы, оригинальные запчасти и честная гарантия на выполненные работы 1 год.</p>
+                    <a href="#appointment" class="btn slide__btn">Записаться на сервис</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 3 -->
+        <div class="slide" style="--slide-img: url('img/3.jpg');">
+            <div class="slide__overlay"></div>
+            <div class="container slide__container">
+                <div class="slide__content">
+                    <span class="slide__badge">Гарантия качества</span>
+                    <h2 class="slide__title">Обслуживание по регламенту</h2>
+                    <p class="slide__text">Сохраняем заводскую гарантию вашего автомобиля. Все расходники в наличии на складе.</p>
+                    <a href="#appointment" class="btn slide__btn">Записаться на сервис</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Индикаторы (Точки навигации) -->
+   <div class="promo__dots" id="sliderDots">
+        
+    </div>
+    <!-- Навигация -->
+    <div class="promo__controls">
+        <button class="promo__arrow-btn" id="prevBtn" aria-label="Назад">&#10094;</button>
+        <button class="promo__dot promo__dot--active" data-slide="0"></button>
+        <button class="promo__dot" data-slide="1"></button>
+        <button class="promo__dot" data-slide="2"></button>
+        <button class="promo__arrow-btn" id="nextBtn" aria-label="Вперед">&#10095;</button>
+    </div>
+</section>
+
+
+    
+<!-- КАТАЛОГ С ФИЛЬТРОМ УСЛУГ -->
+<section class="services" id="services">
+    <div class="container">
+        <div class="services__header">
+            <span class="services__badge">Топ запросов</span>
+            <h2 class="services__title">Популярные услуги автосервиса</h2>
+        </div>
+
+        <!-- Сетка карточек (теперь статична на главной, фильтры удалены) -->
+        <div class="services__grid" id="servicesGrid">
+            
+            <div class="service-card">
+                <div class="service-card__image-box">
+                    <img src="img/dvigatel.webp" alt="Капитальный ремонт ДВС" class="service-card__img">
+                </div>
+                <div class="service-card__content">
+                    <h3 class="service-card__title">Капитальный ремонт ДВС</h3>
+                    <p class="service-card__text">Полная переборка мотора, устранение масложора, замена поршневой группы.</p>
+                    <span class="service-card__price">от 25 000 ₽</span>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__image-box">
+                    <img src="img/diagnostika.jpg" alt="Компьютерная диагностика" class="service-card__img">
+                </div>
+                <div class="service-card__content">
+                    <h3 class="service-card__title">Компьютерная диагностика</h3>
+                    <p class="service-card__text">Поиск скрытых ошибок блоков управления при помощи дилерских сканеров.</p>
+                    <span class="service-card__price">от 1 500 ₽</span>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__image-box">
+                    <img src="img/zamena-masla.jpg" alt="Замена моторного масла" class="service-card__img">
+                </div>
+                <div class="service-card__content">
+                    <h3 class="service-card__title">Замена моторного масла и фильтров</h3>
+                    <p class="service-card__text">Регламентное обслуживание с сохранением дилерской гарантии вашего авто.</p>
+                    <span class="service-card__price">от 800 ₽</span>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__image-box">
+                    <img src="img/grm.jpg" alt="Замена ремня / цепи ГРМ" class="service-card__img">
+                </div>
+                <div class="service-card__content">
+                    <h3 class="service-card__title">Замена ремня / цепи ГРМ</h3>
+                    <p class="service-card__text">Своевременное обновление элементов привода газораспределения во избежание поломок.</p>
+                    <span class="service-card__price">от 6 000 ₽</span>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__image-box">
+                    <img src="img/provodka.jpg" alt="Ремонт сложной автоэлектрики" class="service-card__img">
+                </div>
+                <div class="service-card__content">
+                    <h3 class="service-card__title">Ремонт электропроводки</h3>
+                    <p class="service-card__text">Восстановление поврежденных кос, ремонт генераторов, стартеров и парктроников.</p>
+                    <span class="service-card__price">от 2 000 ₽</span>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__image-box">
+                    <img src="img/tormozx.jpg" alt="Обслуживание тормозов" class="service-card__img">
+                </div>
+                <div class="service-card__content">
+                    <h3 class="service-card__title">Обслуживание тормозной системы</h3>
+                    <p class="service-card__text">Проточка дисков, замена колодок, обслуживание суппортов, прокачка жидкости.</p>
+                    <span class="service-card__price">от 1 200 ₽</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<script>
+    document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const serviceTitle = card.querySelector('.service-card__title').textContent;
+        document.getElementById('carProblem').value = `Требуется услуга: ${serviceTitle}. `;
+        document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => { document.getElementById('carModel').focus(); }, 800);
+    });
+    });
+</script>
+
+<section class="appointment-section" id="appointment">
+    <div class="container appointment-section__container">
+        
+        <!-- Левая колонка: Текстовые контакты -->
+        <div class="appointment-section__info">
+            <span class="services__badge">Контакты</span>
+            <h2 class="appointment-section__title">Свяжитесь с нами</h2>
+            <p class="appointment-section__text">Наш технический центр открыт ежедневно с 9:00 до 21:00. Вы можете записаться через форму справа или позвонить напрямую мастеру-консультанту.</p>
+            
+            <div class="appointment-section__contacts-block">
+                <span class="appointment-section__contacts-label">Телефон приемной:</span>
+                <a href="tel:+88005553535" class="appointment-section__phone-link">+8 (800) 555-35-35</a>
+            </div>
+        </div>
+        
+        <!-- Правая колонка: Ультра-минималистичная форма -->
+        <div class="appointment-section__form-box">
+            <form class="minimal-form" id="footerOrderForm">
+                <div class="form__group">
+                    <input type="text" id="clientName" class="form__input" placeholder="Ваше имя" required>
+                </div>
+                <div class="form__group">
+                    <input type="tel" id="clientPhone" class="form__input" placeholder="Номер телефона" required>
+                </div>
+                <div class="form__group">
+                    <input type="text" id="carModel" class="form__input" placeholder="Марка и модель автомобиля" required>
+                </div>
+                <div class="form__group">
+                    <textarea id="carProblem" class="form__textarea" placeholder="Опишите поломку или симптомы проблемы" rows="3" required></textarea>
+                </div>
+                <div class="form__checkbox-group">
+                    <label class="form__checkbox-label">
+                        <input type="checkbox" class="form__checkbox" required checked>
+                        <span class="form__checkbox-text">Согласен на обработку персональных данных</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn form__btn">Отправить заявку</button>
+                <div class="form__status" id="footerFormStatus"></div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container about__container">
+        <div class="about__content">
+            <span class="services__badge">О сервисе</span>
+            <h2 class="about__title">Инженерный подход к ремонту автомобилей</h2>
+            <p class="about__text">В «Эксперт-Мотор» каждый автомобиль проходит сквозной контроль качества на всех этапах — от первичной компьютерной диагностики до финального тест-драйва мастером цеха.</p>
+        </div>
+        <div class="about__stats">
+            <div class="stat-item">
+                <span class="stat-item__number">12+</span>
+                <span class="stat-item__label">Лет успешной работы</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-item__number">4500</span>
+                <span class="stat-item__label">Обслуженных авто</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-item__number">100%</span>
+                <span class="stat-item__label">Гарантия на работы</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="reviews" id="reviews">
+    <div class="container">
+        <div class="reviews__header">
+            <span class="services__badge">Обратная связь</span>
+            <h2 class="reviews__title">Что говорят автовладельцы о нашем сервисе</h2>
+        </div>
+        <div class="reviews__grid">
+            <div class="review-card">
+                <div class="review-card__top">
+                    <div class="review-card__user">
+                        <span class="review-card__avatar">АМ</span>
+                        <div class="review-card__meta">
+                            <h3 class="review-card__name">Алексей Мишин</h3>
+                            <span class="review-card__car">Ford Focus 3</span>
+                        </div>
+                    </div>
+                    <div class="review-card__rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <p class="review-card__text">Приезжал на капитальный ремонт ДВС. Мотористы здесь — профессионалы. Сделали дефектовку, все запчасти нашли сами. Двигатель теперь работает как часы.</p>
+                <span class="review-card__date">14 мая 2026</span>
+            </div>
+            <div class="review-card">
+                <div class="review-card__top">
+                    <div class="review-card__user">
+                        <span class="review-card__avatar">ЕК</span>
+                        <div class="review-card__meta">
+                            <h3 class="review-card__name">Елена Котова</h3>
+                            <span class="review-card__car">Kia Rio</span>
+                        </div>
+                    </div>
+                    <div class="review-card__rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <p class="review-card__text">Делала компьютерную диагностику и плановое ТО. Очень порадовала чистая приемная и вежливый мастер. Цены соответствуют прайс-листу на сайте.</p>
+                <span class="review-card__date">02 июня 2026</span>
+            </div>
+            <div class="review-card">
+                <div class="review-card__top">
+                    <div class="review-card__user">
+                        <span class="review-card__avatar">ДВ</span>
+                        <div class="review-card__meta">
+                            <h3 class="review-card__name">Дмитрий Васильев</h3>
+                            <span class="review-card__car">BMW X5</span>
+                        </div>
+                    </div>
+                    <div class="review-card__rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <p class="review-card__text">Была проблема с электрикой, в двух сервисах не могли найти причину. Здешний электрик нашел замыкание за полчаса. Сервис отличный, подход к делу строгий.</p>
+                <span class="review-card__date">08 июня 2026</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer" id="footer">
+    <div class="container footer__container">
+        <div class="footer__left">
+            <div class="footer__contacts-block">
+                <span class="footer__contacts-label">Адрес техцентра</span>
+                <p class="footer__address-text">г. Москва, ул. Пушкина, д. 12</p>
+            </div>
+            <div class="footer__contacts-block">
+                <span class="footer__contacts-label">Режим работы цеха</span>
+                <p class="footer__address-text">Ежедневно: с 9:00 до 21:00</p>
+            </div>
+        </div>
+        <div class="footer__right">
+            <div class="footer__nav-group">
+                <span class="footer__contacts-label">Навигация по сайту</span>
+                <ul class="footer__menu-links">
+                    <li><a href="#promo" class="footer__menu-link">Главная</a></li>
+                    <li><a href="#services" class="footer__menu-link">Услуги</a></li>
+                    <li><a href="#appointment" class="footer__menu-link">Контакты</a></li>
+                    <li><a href="#about" class="footer__menu-link">О нас</a></li>
+                    <li><a href="#reviews" class="footer__menu-link">Отзывы</a></li>
+                    <li><a href="prices.html" class="footer__menu-link">Цены</a></li>
+                </ul>
+            </div>
+            <div class="footer__phone-wrap">
+                <a href="tel:+78005553535" class="footer__phone-link">+8 (800) 555-35-35</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    // Сценарий асинхронного перехвата отправки формы и формирования данных для БД
+    document.getElementById('footerOrderForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Блокируем перезагрузку страницы браузером
+    
+    const status = document.getElementById('footerFormStatus');
+    status.textContent = "Формируем запрос...";
+    status.style.color = "#0076ff";
+    
+    // Формирование структурированного JSON-объекта (модели данных для БД)
+    const databaseMock = {
+        name: document.getElementById('clientName').value,
+        phone: document.getElementById('clientPhone').value,
+        car: document.getElementById('carModel').value,
+        problem: document.getElementById('carProblem').value,
+        date: new Date().toLocaleString() // Добавляем штамп времени создания заявки
+    };
+
+    // Вывод объекта в консоль разработчика для демонстрации готовности бэкенда
+    console.log("Запрос оформлен", databaseMock);
+    
+    // Имитация задержки сетевого ответа сервера
+    setTimeout(() => {
+        status.textContent = "Запрос успешно зафиксирован в системе!";
+        status.style.color = "#2ecc71"; // Текст становится зеленым
+        this.reset(); // Очистка всех полей ввода
+    }, 1200);
+    });
+</script>
+
+<!-- ФИКСИРОВАННАЯ КНОПКА НАВЕРХ -->
+<button class="scroll-top" id="scrollTopBtn" aria-label="Вернуться наверх страницы">
+    <!-- Векторная иконка стрелки -->
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+</button>
+
+<script>
+    // Сценарий отслеживания прокрутки окна и плавного возврата наверх
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    // Слушатель события прокрутки (скролла) страницы
+    window.addEventListener('scroll', () => {
+        // Если страница прокручена сверху вниз более чем на 400 пикселей
+        if (window.scrollY > 400) {
+            // Добавляем класс, который делает кнопку видимой через CSS
+            scrollTopBtn.classList.add('scroll-top--visible');
+        } else {
+            // Удаляем класс, если пользователь вернулся в начало страницы
+            scrollTopBtn.classList.remove('scroll-top--visible');
+        }
+    });
+
+    // Слушатель события клика по кнопке
+    scrollTopBtn.addEventListener('click', () => {
+        // Запуск встроенного метода плавной прокрутки к нулевой координате
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' /* Параметр отвечает за мягкое скольжение */
+        });
+    });
+</script>
+
+<script>
+// Восстановление кликабельности карточек услуг на главной странице
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => {
+        // 1. Считываем название услуги из карточки
+        const serviceTitle = card.querySelector('.service-card__title').textContent;
+        const problemTextarea = document.getElementById('carProblem');
+        
+        if (problemTextarea) {
+            // 2. Автоматически вставляем текст выбранной услуги в форму
+            problemTextarea.value = `Требуется услуга: ${serviceTitle}. `;
+        }
+        
+        // 3. Плавная прокрутка к новому блоку формы контакта
+        const appointmentSection = document.getElementById('appointment');
+        if (appointmentSection) {
+            appointmentSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+        
+        // 4. Ставим фокус на поле ввода марки машины после завершения скролла
+        setTimeout(() => {
+            const carInput = document.getElementById('carModel');
+            if (carInput) carInput.focus();
+        }, 800);
+    });
+});
+</script>
+
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Инициализация элементов слайдера
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.promo__dot');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentSlide = 0;
+
+    // Проверка на случай, если элементов нет на странице (например, на второстепенных страницах)
+    if (!slides.length || !dots.length || !prevBtn || !nextBtn) return;
+
+    /**
+     * Универсальная функция переключения слайдов и индикаторов
+     * @param {number} nextIndex - Индекс целевого слайда
+     */
+    function updateSlider(nextIndex) {
+        // Снимаем активные классы с текущего слайда и текущей точки
+        slides[currentSlide].classList.remove('slide--active');
+        dots[currentSlide].classList.remove('promo__dot--active');
+        
+        // Вычисляем индекс нового слайда (с защитой от выхода за пределы массива)
+        currentSlide = (nextIndex + slides.length) % slides.length;
+        
+        // Устанавливаем активные классы новому слайду и его точке
+        slides[currentSlide].classList.add('slide--active');
+        dots[currentSlide].classList.add('promo__dot--active');
+    }
+
+    // Навешиваем событие на стрелку "Назад"
+    prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateSlider(currentSlide - 1);
+    });
+
+    // Навешиваем событие на стрелку "Вперед"
+    nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateSlider(currentSlide + 1);
+    });
+
+    // Навешиваем события на точки-индикаторы
+    dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Явное считывание дата-атрибута с приведением к числу
+            const targetSlide = parseInt(e.target.getAttribute('data-slide'), 10);
+            
+            if (!isNaN(targetSlide) && targetSlide !== currentSlide) {
+                updateSlider(targetSlide);
+            }
+        });
+    });
+
+    // Автоматическое переключение слайдов каждые 6 секунд
+    let sliderInterval = setInterval(() => {
+        updateSlider(currentSlide + 1);
+    }, 6000);
+
+    // Сброс таймера при ручном управлении, чтобы слайды не прыгали слишком быстро
+    const promoControls = document.querySelector('.promo__controls');
+    if (promoControls) {
+        promoControls.addEventListener('click', () => {
+            clearInterval(sliderInterval);
+            sliderInterval = setInterval(() => {
+                updateSlider(currentSlide + 1);
+            }, 6000);
+        });
+    }
+});
+</script>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        // Проверяем, что ссылка ведет на существующий ID на этой же странице
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetSection = document.querySelector(targetId);
+
+        if (targetSection) {
+            e.preventDefault(); // Блокируем мгновенный резкий прыжок браузера
+
+            // 1. Плавный долет до целевой секции
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            // 2. UX-Анимация отклика целевой секции после долета
+            // Сначала удаляем класс, если он уже был там задействован
+            targetSection.classList.remove('section-target-animate');
+            
+            // Запускаем анимацию через микро-таймаут, чтобы браузер успел ее зафиксировать
+            setTimeout(() => {
+                targetSection.classList.add('section-target-animate');
+            }, 400);
+        }
+    });
+});
+</script>
+
+<script>
+    // Автозаполнение формы при переходе со страницы цен на главную
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceName = urlParams.get('service');
+    
+    if (serviceName) {
+        const problemTextarea = document.getElementById('carProblem');
+        if (problemTextarea) {
+            // Вписываем текст услуги в textarea
+            problemTextarea.value = `Требуется услуга из прайс-листа: ${serviceName}. `;
+            
+            // Находим новую секцию формы по её ID
+            const appointmentSection = document.getElementById('appointment');
+            if (appointmentSection) {
+                // Плавно перемещаем пользователя к форме
+                appointmentSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+
+            // Фокусируемся на поле ввода марки машины
+            setTimeout(() => {
+                const carInput = document.getElementById('carModel');
+                if (carInput) carInput.focus();
+            }, 800);
+        }
+    }
+});
+</script>
+</body>
+</html>

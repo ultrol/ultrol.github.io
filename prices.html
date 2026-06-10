@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цены на ремонт | Эксперт-Мотор</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- ШАПКА САЙТА -->
+<header class="header">
+    <div class="container header__container">
+        <a href="index.html" class="logo header__logo" aria-label="Главная Эксперт-Мотор">
+            <img src="img/logo.png" alt="logo" class="logo__image">
+            <div class="logo__text">
+                <span class="logo__title">ЭКСПЕРТ-МОТОР</span>
+                <span class="logo__subtitle">автосервис</span>
+            </div>
+        </a>
+        <div class="header__right">
+            <nav class="menu header__menu" id="headerMenu">
+                <ul class="menu__list">
+                    <!-- На этой странице активна ссылка "Цены" -->
+                    <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
+                    <li class="menu__item"><a href="index.html#services" class="menu__link">Услуги</a></li>
+                    <li class="menu__item"><a href="index.html#about" class="menu__link">О компании</a></li>
+                    <li class="menu__item"><a href="index.html#appointment" class="menu__link">Контакты</a></li>
+                    <li class="menu__item menu__item--separator"><a href="prices.html" class="menu__link menu__link--active">Цены</a></li>
+                </ul>
+                <div class="menu__contacts-mobile">
+                    <a href="tel:+78005553535" class="header__phone">+8 (800) 555-35-35</a>
+                </div>
+            </nav>
+            <div class="header__contacts">
+                <a href="tel:+78005553535" class="header__phone">+8 (800) 555-35-35</a>
+            </div>
+            <button class="burger" id="burgerBtn" aria-label="Открыть меню"><span class="burger__line"></span></button>
+        </div>
+    </div>
+</header>
+
+    <!-- СЕКЦИЯ С ТАБЛИЦЕЙ ЦЕН -->
+    <section class="price-page">
+    <div class="container">
+        <span class="services__badge">Прайс-лист</span>
+        <h1 class="price-page__title">Тарифы на обслуживание автомобилей</h1>
+        
+        <!-- ВСТАВЛЕННЫЕ КНОПКИ ИНТЕРАКТИВНОГО ФИЛЬТРА НА СТРАНИЦЕ ЦЕН -->
+        <div class="filter-buttons">
+            <button class="filter-btn filter-btn--active" data-filter="all">Все категории</button>
+            <button class="filter-btn" data-filter="electro">Электрика</button>
+            <button class="filter-btn" data-filter="engine">Ремонт ДВС</button>
+            <button class="filter-btn" data-filter="maintenance">ТО автомобиля</button>
+            <button class="filter-btn" data-filter="hod">Ходовая часть</button>
+            <button class="filter-btn" data-filter="tormoz">Тормозная система</button>
+            <button class="filter-btn" data-filter="kond">Кондиционер</button>
+        </div>
+
+        <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Наименование выполняемой работы</th>
+                    <th>Срок исполнения</th>
+                    <th>Стоимость услуги</th>
+                    <th>Запись</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ГРУППА: ЭЛЕКТРИКА -->
+                 <tr class="price-row" data-category="electro" style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Компьютерная диагностика и электрика</td></tr>
+                <tr class="price-row" data-category="electro">
+                    <td data-label="Услуга">Компьютерное сканирование всех блоков управления (ЭБУ) с расшифровкой ошибок</td>
+                    <td data-label="Срок">от 20 минут</td>
+                    <td class="text-accent">1 500 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Компьютерная диагностика ЭБУ#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="electro">
+                    <td data-label="Услуга">Поиск скрытого короткого замыкания, утечки тока и ремонт силовой автопроводки</td>
+                    <td data-label="Срок">от 1 часа</td>
+                    <td class="text-accent">от 2 000 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Ремонт автопроводки#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="electro">
+                    <td data-label="Услуга">Диагностика, переборка или полная замена генератора / стартера автомобиля</td>
+                    <td data-label="Срок">от 1.5 часов</td>
+                    <td class="text-accent">от 2 500 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Ремонт генератора и стартера#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="electro">
+                    <td data-label="Услуга">Адаптация дроссельной заслонки, датчиков положения и сброс сервисных интервалов</td>
+                    <td data-label="Срок">от 15 минут</td>
+                    <td class="text-accent">1 000 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Адаптация датчиков и дросселя#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="electro">
+                    <td data-label="Услуга">Установка и настройка охранных систем (сигнализации с автозапуском, парктроники)</td>
+                    <td data-label="Срок">от 3 часов</td>
+                    <td class="text-accent">от 5 000 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Установка автосигнализации#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+
+                <!-- ГРУППА 2: РЕМОНТ ДВИГАТЕЛЯ -->
+                <tr class="price-row" data-category="engine" style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Ремонт двигателей (ДВС)</td></tr>
+                <tr class="price-row" data-category="engine">
+                    <td data-label="Услуга">Капитальный ремонт бензинового / дизельного ДВС (дефектовка, расточка, сборка)</td>
+                    <td data-label="Срок">от 3 дней</td>
+                    <td class="text-accent">от 25 000 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Капитальный ремонт ДВС#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="engine">
+                    <td data-label="Услуга">Замена комплекта приводного ремня или цепи ГРМ, натяжных роликов и водяной помпы</td>
+                    <td data-label="Срок">от 3 часов</td>
+                    <td class="text-accent">от 6 000 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Замена комплекта ГРМ#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="engine">
+                    <td data-label="Услуга">Замена прокладки головки блока цилиндров (ГБЦ) с шлифовкой привалочной плоскости</td>
+                    <td data-label="Срок">от 5 часов</td>
+                    <td class="text-accent">от 8 000 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Замена прокладки ГБЦ#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="engine">
+                    <td data-label="Услуга">Регулировка тепловых зазоров клапанов (механическая, подбором шайб или стаканов)</td>
+                    <td data-label="Срок">от 2 часов</td>
+                    <td class="text-accent">от 2 500 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Регулировка клапанов#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="engine">
+                    <td data-label="Услуга">Замена переднего / заднего сальника коленвала, прокладки клапанной крышки и поддона</td>
+                    <td data-label="Срок">от 1 часа</td>
+                    <td class="text-accent">от 1 500 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Замена сальников и прокладок ДВС#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+
+                <!-- ГРУППА 3: ТЕХНИЧЕСКОЕ ОБСЛУЖИВАНИЕ -->
+                <tr class="price-row" data-category="maintenance" style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Техническое обслуживание (ТО)</td></tr>
+                <tr class="price-row" data-category="maintenance">
+                    <td data-label="Услуга">Замена моторного масла, масляного, воздушного и салонного фильтров</td>
+                    <td data-label="Срок">от 30 минут</td>
+                    <td class="text-accent">800 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Регламентное ТО автомобиля#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="maintenance">
+                    <td data-label="Услуга">Полная аппаратная замена трансмиссионного масла в АКПП / Вариаторе (CVT)</td>
+                    <td data-label="Срок">от 1 часа</td>
+                    <td class="text-accent">от 3 500 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Аппаратная замена масла в АКПП#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="maintenance">
+                    <td data-label="Услуга">Замена свечей зажигания (комплект, 4 шт., бензиновый ДВС)</td>
+                    <td data-label="Срок">от 20 минут</td>
+                    <td class="text-accent">от 1 000 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Замена свечей зажигания#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="maintenance">
+                    <td data-label="Услуга">Комплексная промывка инжектора и топливных форсунок на специализированном стенде</td>
+                    <td data-label="Срок">от 1 часа</td>
+                    <td class="text-accent">2 500 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Промывка инжектора и форсунок#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="maintenance">
+                    <td data-label="Услуга">Замена охлаждающей жидкости (антифриза) с полной промывкой контура радиатора</td>
+                    <td data-label="Срок">от 40 минут</td>
+                    <td class="text-accent">1 500 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Замена антифриза с промывкой#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+
+                <!-- ГРУППА 4: ХОДОВАЯ И ТОРМОЗА (ВХОДЯТ В ОСТАЛЬНЫЕ УСЛУГИ) -->
+                <tr class="price-row" data-category="hod" style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Ходовая часть и рулевое управление</td></tr>
+                <tr class="price-row" data-category="hod">
+                    <td data-label="Услуга">Замена передних / задних амортизаторов, опорных подшипников и пружин подвески (за шт.)</td>
+                    <td data-label="Срок">от 1 часа</td>
+                    <td class="text-accent">от 1 800 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Замена амортизаторов подвески#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="hod">
+                    <td data-label="Услуга">Замена ступичного подшипника (выпрессовка и запрессовка на гидравлическом станке)</td>
+                    <td data-label="Срок">от 1.5 часов</td>
+                    <td class="text-accent">от 2 000 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Замена ступичного подшипника#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                  <tr class="price-row" data-category="hod">
+                    <td data-label="Услуга">Замена сайлентблоков рычагов подвески, шаровых опор, тяг и втулок стабилизатора</td>
+                    <td data-label="Срок">от 30 минут</td>
+                    <td class="text-accent">от 600 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Ремонт рычагов и сайлентблоков#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="hod">
+                    <td data-label="Услуга">Ремонт рулевой рейки (замена ремкомплекта, сальников, устранение люфта и стука)</td>
+                    <td data-label="Срок">от 5 часов</td>
+                    <td class="text-accent">от 7 000 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Ремонт рулевой рейки#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="hod">
+                    <td data-label="Услуга">Проверка и регулировка углов установки колес (Сход-Развал) на высокоточном 3D-стенде</td>
+                    <td data-label="Срок">от 30 минут</td>
+                    <td class="text-accent">1 600 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Регулировка Сход-Развала 3D#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+
+                <!-- ГРУППА 5: ТОРМОЗНАЯ СИСТЕМА -->
+                <tr class="price-row" data-category="tormoz" style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Ремонт и обслуживание тормозной системы</td></tr>
+                <tr class="price-row" data-category="tormoz">
+                    <td data-label="Услуга">Замена тормозных колодок (дисковая тормозная система, за ось)</td>
+                    <td data-label="Срок">от 20 минут</td>
+                    <td class="text-accent">800 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Замена тормозных колодок#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="tormoz">
+                    <td data-label="Услуга">Замена тормозных дисков в комплекте с колодками и очисткой посадочных мест (ось)</td>
+                    <td data-label="Срок">от 40 минут</td>
+                    <td class="text-accent">1 800 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Замена тормозных дисков#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="tormoz">
+                    <td data-label="Услуга">Комплексная переборка тормозного суппорта (замена поршня, пыльников, смазка направляющих)</td>
+                    <td data-label="Срок">от 1 часа</td>
+                    <td class="text-accent">от 1 500 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Ремонт и переборка суппортов#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="tormoz">
+                    <td data-label="Услуга">Замена тормозной жидкости под давлением с полной прокачкой контуров системы и ABS</td>
+                    <td data-label="Срок">от 30 минут</td>
+                    <td class="text-accent">1 200 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Замена тормозной жидкости#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+
+                <!-- ГРУППА 6: КЛИМАТ И КОНДИЦИОНЕРЫ -->
+                <tr class="price-row" data-category="kond" style="background-color: rgba(0, 118, 255, 0.05); font-weight: 700;"><td colspan="4">Обслуживание автомобильных кондиционеров</td></tr>
+                <tr class="price-row" data-category="kond">
+                    <td data-label="Услуга">Вакуумирование системы кондиционирования, проверка на герметичность и заправка фреоном</td>
+                    <td data-label="Срок">от 30 минут</td>
+                    <td class="text-accent">2 000 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Заправка кондиционера фреоном#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+                <tr class="price-row" data-category="kond">
+                    <td data-label="Услуга">Антибактериальная дезинфекция испарителя кондиционера и воздуховодов ультразвуком</td>
+                    <td data-label="Срок">от 40 минут</td>
+                    <td class="text-accent">1 800 ₽</td>
+                    <td data-label="Запись"><a href="index.html?service=Дезинфекция кондиционера#appointment" class="price-table__btn">✔</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const priceRows = document.querySelectorAll('.price-row');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Переключаем активную кнопку
+                filterButtons.forEach(btn => btn.classList.remove('filter-btn--active'));
+                button.classList.add('filter-btn--active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                priceRows.forEach(row => {
+                    const category = row.getAttribute('data-category');
+
+                    // Если выбрано "all" или категория строки совпадает с фильтром
+                    if (filterValue === 'all' || category === filterValue) {
+                        row.style.display = ''; // Показываем строку (стандартное значение tr)
+                    } else {
+                        row.style.display = 'none'; // Прячем строку
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<footer class="footer" id="footer">
+    <div class="container footer__container">
+        <div class="footer__left">
+            <div class="footer__contacts-block">
+                <span class="footer__contacts-label">Адрес техцентра</span>
+                <p class="footer__address-text">г. Москва, ул. Пушкина, д. 12</p>
+            </div>
+            <div class="footer__contacts-block">
+                <span class="footer__contacts-label">Режим работы цеха</span>
+                <p class="footer__address-text">Ежедневно: с 9:00 до 21:00</p>
+            </div>
+        </div>
+        <div class="footer__right">
+            <div class="footer__nav-group">
+                <span class="footer__contacts-label">Навигация по сайту</span>
+                <ul class="footer__menu-links">
+                    <li><a href="index.html#promo" class="footer__menu-link">Главная</a></li>
+                    <li><a href="index.html#services" class="footer__menu-link">Услуги</a></li>
+                    <li><a href="index.html#appointment" class="footer__menu-link">Контакты</a></li>
+                    <li><a href="index.html#about" class="footer__menu-link">О нас</a></li>
+                    <li><a href="index.html#reviews" class="footer__menu-link">Отзывы</a></li>
+                    <li><a href="prices.html" class="footer__menu-link">Цены</a></li>
+                </ul>
+            </div>
+            <div class="footer__phone-wrap">
+                <a href="tel:+78005553535" class="footer__phone-link">+8 (800) 555-35-35</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const headerMenu = document.getElementById('headerMenu');
+        burgerBtn.addEventListener('click', () => {
+            burgerBtn.classList.toggle('burger--active');
+            headerMenu.classList.toggle('menu--open');
+        });
+    </script>
+</body>
+</html>
